@@ -1,45 +1,79 @@
-**Web Platform Development 2 Coursework**
+# Simple Web Shop
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+This is a simple example to show how to set up a shop using the Java Servlet framework
+and Google Guice as the dependency injection framework.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+The code is licensed under the GPL Version 3.
 
----
+## Requirements
 
-## Edit a file
+To run it you need [Java 8][2], [Maven][3] and (optionally) [Intellij][4] for which there is a project set up.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+# Using Git
+    
+The repository is stored in Git. We use branches to set up the various stages of development.
+This initial version is on the `initial` branch.  You can see further branches as we go.
+To get started, run the command
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+    git checkout initial
 
----
+To get the initial state of the repository.
 
-## Create a file
+# Get started
 
-Next, you’ll add a new file to this repository.
+You must have Java and Maven installed and can run Maven with the <code>mvn</code> command at a prompt.
+To check this get up a command prompt and type <code>mvn --version</code> (note two hyphens).  You should
+see a version number and other stuff about the Java version. You should have at least version 7 of Java.  
+If you use Java 8 that's OK, but note that the Maven POM asks for Java 7, and Java 8 or higher doesn't run
+on AppEngine.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+Once Maven is installed then simply type
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+    mvn clean package exec:java
 
----
+The first time this may take a while as a lot of dependencies need to be installed.  Future runs will be quicker.
+There will be a lot of output finishing with:
 
-## Clone a repository
+    INFO: Dev App Server is now running
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+By default you are running from the address `http://localhost:9000` on the development server. All the paths
+below are relative to this, which may differ for you if you change it.
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+Now open a web browser and go to: `http://localhost:9000/a/b/c`. You will see a message:
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+    Welcome, your shop is called Demo Shop and your path is /a/b/c
+    
+## Technology stack in the starter
+
+The starter uses [Jetty][1] to run an embedded web server.
+
+The main class is `Runner`. This starts an embedded Jetty Server. 
+
+We are using the dependency injection framework [Guice][5], and in particular [Guice Servlet][6]
+in order to make wiring the application together a little simpler.  When Jetty starts it runs
+a filter which does all the Jetty wiring.
+
+The single servlet at this stage is 
+
+    DemoServlet
+    
+Every servlet controlled by Guice needs the `@Singleton` annotation on the class, and the `@Inject`
+annotation on the constructor.  The annotated variable `shopName` then gets the value set in the `BindingModule`. 
+
+The `RouteModule` class says which servlets are run for which request path.  In this case all paths
+run the `DemoServlet` class.
+
+The `DemoServlet` class is wired up for Guice.  Note that servlets need the `Singleton` and `Inject` annotations,
+and that the automatic wiring sets up the `shopName` variable using the `ShopName` annotation.  The value is
+set in the `BindingModule`.
+ 
+
+
+
+
+[1]: https://eclipse.org/jetty/
+[2]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[3]: http://maven.apache.org/download.cgi
+[4]: http://www.jetbrains.com/idea/
+[5]: https://github.com/google/guice/wiki/GettingStarted
+[6]: https://github.com/google/guice/wiki/Servlets
