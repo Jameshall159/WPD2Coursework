@@ -1,11 +1,15 @@
-# Simple Web Shop
+# Milestone Planner Application
 
-This is a simple example to show how to set up a shop using the Java Servlet framework
-and Google Guice as the dependency injection framework.
+Submitted as part of the Web Platform Development 2 module by:
+- Christopher campbell
+- James Hall
+- Heather Reid
 
-The code is licensed under the GPL Version 3.
+## Coursework Requirements
 
-## Requirements
+Design and implement a milestone planner application. A milestone planner contains a list of
+milestones that you are planning to carry out for your coursework project. The application allows the
+user to define his or her own milestones, which are only visible to the user
 
 To run it you need [Java 8][2], [Maven][3] and (optionally) [Intellij][4] for which there is a project set up.
 
@@ -43,7 +47,7 @@ Now open a web browser and go to: `http://localhost:9000/a/b/c`. You will see a 
 
     Welcome, your shop is called Demo Shop and your path is /a/b/c
     
-## Technology stack in the starter
+## Technology stack used in the project
 
 The starter uses [Jetty][1] to run an embedded web server.
 
@@ -67,9 +71,6 @@ The `DemoServlet` class is wired up for Guice.  Note that servlets need the `Sin
 and that the automatic wiring sets up the `shopName` variable using the `ShopName` annotation.  The value is
 set in the `BindingModule`.
  
-
-
-
 
 [1]: https://eclipse.org/jetty/
 [2]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
