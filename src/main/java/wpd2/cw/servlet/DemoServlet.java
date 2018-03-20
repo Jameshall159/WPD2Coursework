@@ -1,4 +1,4 @@
-package wpd2.lab1.servlet;
+package wpd2.cw.servlet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

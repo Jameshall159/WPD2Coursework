@@ -50,9 +50,9 @@
                 </executions>
                 <configuration>
                     <killAfter>-1</killAfter>
-                    <mainClass>wpd2.lab1.Runner</mainClass>
+                    <mainClass>wpd2.cw.Runner</mainClass>
                     <arguments>
-                        <argument>Demo Shop</argument>
+                        <argument>Milestone Tracker</argument>
                     </arguments>
                 </configuration>
             </plugin>

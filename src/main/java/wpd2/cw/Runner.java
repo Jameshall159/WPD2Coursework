@@ -1,7 +1,7 @@
 
-package wpd2.lab1;
+package wpd2.cw;
 
-import wpd2.lab1.servlet.DemoServlet;
+import wpd2.cw.servlet.DemoServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
