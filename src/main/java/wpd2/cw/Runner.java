@@ -37,11 +37,13 @@ public class Runner {
         handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/index.html");
         handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/add"); // we post to here
 
+
         //Maps ListPersonsServlet to process requests to "localhost:9000/view"
         handler.addServlet(new ServletHolder(new ListPersonsServlet(h2Person)), "/view");
 
         DefaultServlet ds = new DefaultServlet();
         handler.addServlet(new ServletHolder(ds), "/");
+
 
         server.start();
         LOG.info("Server started, will run until terminated");
