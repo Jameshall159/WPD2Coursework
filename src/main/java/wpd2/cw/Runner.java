@@ -1,34 +1,44 @@
 
 package wpd2.cw;
 
-import wpd2.cw.servlet.DemoServlet;
+import wpd2.cw.dbdemo.db.H2Person;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import wpd2.cw.servlet.PersonServlet;
+import wpd2.cw.servlet.ListPersonsServlet;
+
+
+import java.util.Locale;
+
 
 public class Runner {
     @SuppressWarnings("unused")
-    private static final Logger LOG = LoggerFactory.getLogger(Runner.class);
+    static final Logger LOG = LoggerFactory.getLogger(Runner.class);
 
     private static final int PORT = 9000;
-    private final String shopName;
 
-    private Runner(String shopName) {
-        this.shopName = shopName;
+    private final H2Person h2Person;
+
+    public Runner() {
+        h2Person = new H2Person();
     }
 
-    private void start() throws Exception {
+    public void start() throws Exception {
         Server server = new Server(PORT);
 
         ServletContextHandler handler = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
         handler.setContextPath("/");
         handler.setInitParameter("org.eclipse.jetty.servlet.Default." + "resourceBase", "src/main/resources/webapp");
 
-        DemoServlet demoServlet = new DemoServlet(shopName);
-        handler.addServlet(new ServletHolder(demoServlet), "/shop/*");
+        handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/index.html");
+        handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/add"); // we post to here
+
+        //Maps ListPersonsServlet to process requests to "localhost:9000/view"
+        handler.addServlet(new ServletHolder(new ListPersonsServlet(h2Person)), "/view");
 
         DefaultServlet ds = new DefaultServlet();
         handler.addServlet(new ServletHolder(ds), "/");
@@ -36,15 +46,15 @@ public class Runner {
         server.start();
         LOG.info("Server started, will run until terminated");
         server.join();
-
     }
 
     public static void main(String[] args) {
         try {
-            LOG.info("starting");
-            new Runner("Demo Shop").start();
+            LOG.info("starting dbdemo");
+            Locale.setDefault(Locale.UK);
+            new Runner().start();
         } catch (Exception e) {
-            LOG.error("Unexpected error running shop: " + e.getMessage());
+            LOG.error("Unexpected error running dbdemo: " + e.getMessage());
         }
     }
 }
