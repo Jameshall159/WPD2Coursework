@@ -1,0 +1,29 @@
+{{>db_header}}
+<h1>DB Demo</h1>
+
+<form method="POST" action="/add">
+    <label for="first">First:</label>
+    <input type="text" id="first" name="first">
+    <label for="last">Last:</label>
+    <input type="text" id="last" name="last">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+
+    <input type="submit" value="add">
+</form>
+<p>There are {{count}} persons in the database</p>
+
+<p><a href="/view" class="button">View Users</a></p>
+
+<p>List of users</p>
+
+<ul>
+    {{#persons}}
+        <li>{{first}} {{last}}
+            <a href="mailto:{{email}}" target="_blank">{{email}} </a></li>
+    {{/persons}}
+</ul>
+
+</div>
+</body>
+</html>

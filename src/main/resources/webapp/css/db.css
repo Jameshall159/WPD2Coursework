@@ -1,0 +1,11 @@
+body {
+    font-family:Arial,Helvetica;
+}
+a.button {
+    display:inline-block;
+    background:cornflowerblue;
+    color:red;
+    padding:1em 2em ;
+    text-decoration:none;
+    border-radius:5px;
+}

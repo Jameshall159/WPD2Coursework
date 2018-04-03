@@ -1,0 +1,16 @@
+{{> db_header}}
+
+<div>
+    <h1>DB Demo</h1>
+    <p>List of users</p>
+
+    <ul>
+        {{#persons}}
+            <li>{{first}} {{last}}
+                <a href="mailto:{{email}}" target="_blank">{{email}} </a></li>
+        {{/persons}}
+    </ul>
+
+</div>
+</body>
+</html>
