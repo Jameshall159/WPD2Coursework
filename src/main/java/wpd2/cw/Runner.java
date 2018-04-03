@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import wpd2.cw.servlet.LoginServlet;
 import wpd2.cw.servlet.PersonServlet;
 import wpd2.cw.servlet.ListPersonsServlet;
+import wpd2.cw.servlet.RegisterServlet;
 
 
 import java.util.Locale;
@@ -44,6 +45,9 @@ public class Runner {
 
         //Login
         handler.addServlet(new ServletHolder(new LoginServlet(h2Person)), "/login");
+
+        //register
+        handler.addServlet(new ServletHolder(new RegisterServlet(h2Person)), "/register");
 
 
 
