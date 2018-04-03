@@ -8,6 +8,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import wpd2.cw.servlet.LoginServlet;
 import wpd2.cw.servlet.PersonServlet;
 import wpd2.cw.servlet.ListPersonsServlet;
 
@@ -40,6 +41,11 @@ public class Runner {
 
         //Maps ListPersonsServlet to process requests to "localhost:9000/view"
         handler.addServlet(new ServletHolder(new ListPersonsServlet(h2Person)), "/view");
+
+        //Login
+        handler.addServlet(new ServletHolder(new LoginServlet(h2Person)), "/login");
+
+
 
         DefaultServlet ds = new DefaultServlet();
         handler.addServlet(new ServletHolder(ds), "/");
