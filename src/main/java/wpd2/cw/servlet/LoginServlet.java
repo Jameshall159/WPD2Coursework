@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String html = mustache.render("login.mustache", new PersonsClass());
+        String html = mustache.render("register.mustache", new PersonsClass());
 
         // Set the content type and status code and render/write the response
         response.setContentType("text/html");
