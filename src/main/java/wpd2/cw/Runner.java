@@ -8,7 +8,6 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import wpd2.cw.servlet.LoginServlet;
 import wpd2.cw.servlet.PersonServlet;
 import wpd2.cw.servlet.ListPersonsServlet;
 import wpd2.cw.servlet.RegisterServlet;
