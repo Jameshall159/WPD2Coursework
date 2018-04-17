@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -10,15 +10,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-    <orderEntry type="library" name="Maven: com.github.spullara.mustache.java:compiler:0.9.4" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.12" level="project" />
-    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.194" level="project" />
-    <orderEntry type="library" name="Maven: com.github.spullara.mustache.java:compiler:0.9.4" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.12" level="project" />
-    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.194" level="project" />
-=======
->>>>>>> a0756209eabff5a08f0224ebe5bc937a661dc706
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-jdk14:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: com.github.spullara.mustache.java:compiler:0.9.4" level="project" />

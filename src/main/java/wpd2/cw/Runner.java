@@ -8,13 +8,10 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-<<<<<<< HEAD
 import wpd2.cw.servlet.*;
-=======
 import wpd2.cw.servlet.PersonServlet;
 import wpd2.cw.servlet.ListPersonsServlet;
 import wpd2.cw.servlet.RegisterServlet;
->>>>>>> a0756209eabff5a08f0224ebe5bc937a661dc706
 
 
 import java.util.Locale;
