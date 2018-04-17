@@ -8,10 +8,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import wpd2.cw.servlet.LoginServlet;
-import wpd2.cw.servlet.PersonServlet;
-import wpd2.cw.servlet.ListPersonsServlet;
-import wpd2.cw.servlet.RegisterServlet;
+import wpd2.cw.servlet.*;
 
 
 import java.util.Locale;
@@ -50,6 +47,8 @@ public class Runner {
         handler.addServlet(new ServletHolder(new RegisterServlet(h2Person)), "/register");
 
 
+        //home
+        handler.addServlet(new ServletHolder(new HomeServlet(h2Person)), "/home");
 
         DefaultServlet ds = new DefaultServlet();
         handler.addServlet(new ServletHolder(ds), "/");
