@@ -3,7 +3,6 @@ package wpd2.cw.servlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import wpd2.cw.dbdemo.db.H2Person;
-import wpd2.cw.util.Mustache.H2Person;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
