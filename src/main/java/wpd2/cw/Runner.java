@@ -36,7 +36,7 @@ public class Runner {
         handler.setContextPath("/");
         handler.setInitParameter("org.eclipse.jetty.servlet.Default." + "resourceBase", "src/main/resources/webapp");
 
-        handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/index.html");
+        handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/index");
         handler.addServlet(new ServletHolder(new PersonServlet(h2Person)), "/add"); // we post to here
 
 
