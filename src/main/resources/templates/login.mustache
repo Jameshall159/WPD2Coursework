@@ -2,7 +2,7 @@
 <h1>Login</h1>
 <form action="/login" method="POST">
     <label>Name:<input type="text" name="userName" placeholder="name" value="{{userName}}"/></label>
-    <label>Password:<input type="text" name="password" placeholder="password"/></label><br/>
+    <label>Password:<input type="password" name="password"  placeholder="password"/></label><br/>
     <input type="submit" value="Login" style="margin-top:1em;"/>
     {{#err}}
         <p style="color:red;">{{err}}</p>
