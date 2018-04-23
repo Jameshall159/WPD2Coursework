@@ -53,7 +53,6 @@ public class Runner {
         //home
         handler.addServlet(new ServletHolder(new HomeServlet(h2Person)), "/home");
 
-
         DefaultServlet ds = new DefaultServlet();
         handler.addServlet(new ServletHolder(ds), "/");
 

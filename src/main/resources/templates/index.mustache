@@ -1,23 +1,25 @@
 {{> db_header}}
 
-<div class="background" style="background-image: url('images/bg5.jpg'); background-repeat: no-repeat; background-size: cover; width:100%; height:500px; background-position: center; margin-top:50px;">
+<div class="background" style="background-image: url('images/bg4.jpg'); background-repeat: no-repeat; background-size: cover; width:100%; height:400px; background-position: center; margin-top:50px;">
 
 <br>
 <center><h1 style="color:white;">Please Sign Up</h1></center>
 
 <center><form method="POST" action="/add" style="color:white; font-size:15px;">
-    <input type="text" id="first" name="first" placeholder="First Name" style="width:350px; height:40px; margin-top:20px; margin-bottom:20px; border-radius:10px;">
+    <input type="text" id="first" name="first" placeholder="First Name" style="padding:10px; width:350px; height:40px; margin-top:20px; margin-bottom:20px; border-radius:10px;">
     <br>
-    <input type="text" id="last" name="last" placeholder="Last Name" style="width:350px; height:40px; margin-bottom:20px; border-radius:10px;">
+    <input type="text" id="last" name="last" placeholder="Last Name" style=" padding:10px; width:350px; height:40px; margin-bottom:20px; border-radius:10px;">
     <br>
-    <input type="text" id="email" name="email" placeholder="Email Address" style="width:350px; height:40px; margin-bottom:20px; border-radius:10px;">
+    <input type="text" id="email" name="email" placeholder="Email Address" style="padding:10px; width:350px; height:40px; margin-bottom:20px; border-radius:10px;">
     <br>
     <input type="submit" value="add" style="border-radius:10px; width:200px; height:40px; background-color:white;">
 </form></center>
+    <br>
+    <br>
+    <br>
+    <br>
+<hr />
 
-<p>There are {{count}} persons in the database</p>
-
-<p><a href="/view" class="button">View Users</a></p>
 
 <ul>
     {{#persons}}
