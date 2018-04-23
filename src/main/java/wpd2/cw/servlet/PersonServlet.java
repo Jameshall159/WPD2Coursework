@@ -43,7 +43,7 @@ public class PersonServlet extends HttpServlet{
         String email = request.getParameter("email");
         Person person = new Person(first, last, email);
         h2Person.addPerson(person);
-        response.sendRedirect("/index.html");
+        response.sendRedirect("/index");
     }
 
     @Data
