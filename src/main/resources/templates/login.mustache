@@ -1,5 +1,4 @@
-<html>
-<body>
+{{>head}}
 <h1>Login</h1>
 <form action="/login" method="POST">
     <label>Name:<input type="text" name="userName" placeholder="name" value="{{userName}}"/></label>
@@ -9,5 +8,4 @@
         <p style="color:red;">{{err}}</p>
     {{/err}}
 </form>
-</body>
-</html>
+{{>foot}}
