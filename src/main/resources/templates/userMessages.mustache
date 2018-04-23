@@ -1,0 +1,24 @@
+<html>
+<body>
+<h1>Messages</h1>
+<p>Messages for {{user}}</p>
+<form action="/messages/{{user}}" method="POST">
+{{^messages}}
+    <label>There are no messages for {{user}}</label>
+{{/messages}}
+{{#messages}}
+<ul>
+    <li>
+        {{#matches}}<input type="radio" name="msgId" value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}}
+    </li>
+</ul>
+{{/messages}}
+    {{#matches}}
+    <input type="hidden" name="method" value="delete">
+    <input type="submit" value="Delete" style="margin-top:1em;"/>
+    {{/matches}}
+</form>
+
+<p><a href="/index.html">Home</a></p>
+</body>
+</html>

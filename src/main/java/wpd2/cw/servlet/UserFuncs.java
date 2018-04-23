@@ -1,3 +1,4 @@
+
 package wpd2.cw.servlet;
 
 import lombok.NonNull;
@@ -11,23 +12,25 @@ class UserFuncs {
     @SuppressWarnings("unused")
     static final Logger LOG = LoggerFactory.getLogger(UserFuncs.class);
 
-    final static String USERNAME_PARAMETER = "email";
-    private final static String USER_NAME_KEY = "email";
+    final static String USERNAME_PARAMETER = "userName";
+    final static String USERPASS_PARAMETER = "password";
+
+    private final static String USER_NAME_KEY = "userName";
     private final static String LOGIN_REDIRECT_KEY = "redirectURL";
-    final static String DEFAULT_LOGIN_REDIRECT = "/home";
+
+    final static String DEFAULT_LOGIN_REDIRECT = "/index.html";
 
     private UserFuncs() {}
 
-    static void setCurrentUser(HttpServletRequest request, @NonNull String email) {
+    static void setCurrentUser(HttpServletRequest request, @NonNull String userName) {
         HttpSession session = request.getSession(true);
-        session.setAttribute(USER_NAME_KEY, email);
+        session.setAttribute(USER_NAME_KEY, userName);
     }
 
     static void clearCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         session.removeAttribute(USER_NAME_KEY);
     }
-
 
     /**
      * Find the current user, if any

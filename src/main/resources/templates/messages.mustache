@@ -1,0 +1,28 @@
+<html>
+<body>
+<h1>Messages</h1>
+{{#user}}
+<form action="/messages/{{user}}">
+    <input type="submit" value="Your messages" style="margin-top:1em;"/>
+</form>
+{{/user}}
+
+<p>Current messages.</p>
+{{^messages}}
+    There are no messages
+{{/messages}}
+{{#messages}}
+<ul>
+    <li>
+        Message: {{message}} Created: {{createdDate}} By: {{user}}
+    </li>
+</ul>
+{{/messages}}
+<p>Add a message {{user}}</p>
+<form action="/messages" method="POST">
+    <label>Message:<input type="text" name="message" placeholder="message"/></label>
+    <input type="submit" value="Create" style="margin-top:1em;"/>
+</form>
+<p><a href="/index.html">Home</a></p>
+</body>
+</html>
