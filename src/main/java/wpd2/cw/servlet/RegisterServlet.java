@@ -14,11 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Singleton
-public class LoginServlet extends BaseServlet {
+public class RegisterServlet extends BaseServlet {
     @SuppressWarnings("unused")
     static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
 
-    private static final String LOGIN_TEMPLATE = "login.mustache";
+    private static final String REGISTER_TEMPLATE = "register.mustache";
     private static final String EMPTY_FIELD_ERR = "Neither the user name or password can be empty";
     private static final String BAD_PASSWORD_ERROR = "The password is incorrect";
     private static final String ERR_PARAM = "err";
@@ -27,7 +27,7 @@ public class LoginServlet extends BaseServlet {
     private H2User h2User;
 
     @Inject
-    public LoginServlet(H2User h2User) {
+    public RegisterServlet(H2User h2User) {
         this.h2User = h2User;
     }
 
@@ -38,7 +38,7 @@ public class LoginServlet extends BaseServlet {
         Map<String, String> params = new HashMap<>();
         params.put(USER_NAME_PARAM, userName);
 
-        showView(response, LOGIN_TEMPLATE, params);
+        showView(response, REGISTER_TEMPLATE, params);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class LoginServlet extends BaseServlet {
             params.put(ERR_PARAM, BAD_PASSWORD_ERROR);
         }
         if (params.containsKey(ERR_PARAM)) {
-            showView(response, LOGIN_TEMPLATE, params);
+            showView(response, REGISTER_TEMPLATE, params);
         } else {
             UserFuncs.setCurrentUser(request, name);
             String targetURL = UserFuncs.getLoginRedirect(request);
@@ -67,13 +67,9 @@ public class LoginServlet extends BaseServlet {
     }
 
     private boolean checkUserNameAndPassword(String userName, String password) {
-        if (h2User.isRegistered(userName)) {
-            return h2User.login(userName, password);
-<<<<<<< HEAD
-        } else {
-            return false;
-=======
->>>>>>> 40f84a1fafea42cf622d318d4ced30bed56f0fab
+        if (h2User.register(userName, password)) {
+            return true;
         }
+        return false;
     }
 }

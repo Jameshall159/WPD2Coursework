@@ -1,0 +1,13 @@
+{{>head}}
+<h1>Register</h1>
+<form action="/register" method="POST">
+    <label>Name:<input type="text" name="userName" placeholder="name" value="{{userName}}"/></label>
+    <label>Password:<input type="text" name="password" placeholder="password"/></label><br/>
+    <input type="submit" value="Login" style="margin-top:1em;"/>
+    {{#err}}
+        <p style="color:red;">{{err}}</p>
+    {{/err}}
+</form>
+
+<a href="index.html">Return</a>
+{{>foot}}
