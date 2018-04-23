@@ -7,16 +7,37 @@
 {{/user}}
 
 <p>Current messages.</p>
-{{^messages}}
-    There are no messages
-{{/messages}}
-{{#messages}}
-<ul>
-    <li>
-        Message: {{message}} Created: {{createdDate}} By: {{user}}
-    </li>
-</ul>
-{{/messages}}
+
+
+
+
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Message</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">User</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{^messages}}
+            There are no messages
+        {{/messages}}
+        {{#messages}}
+        <tr>
+
+
+        <td>{{message}}</td>
+            <td>{{createdDate}}</td>
+            <td>{{user}}</td>
+
+        </tr>
+        {{/messages}}
+        </tbody>
+    </table>
+
+
+
 <p>Add a message {{user}}</p>
 <form action="/messages" method="POST">
     <label>Message:<input type="text" name="message" placeholder="message"/></label>
