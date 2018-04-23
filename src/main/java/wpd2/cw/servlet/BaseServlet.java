@@ -17,6 +17,7 @@ public class BaseServlet extends HttpServlet {
     public static final  String PLAIN_TEXT_UTF_8 = "text/plain; charset=UTF-8";
     public static final Charset CHARSET_UTF8 = Charset.forName("UTF-8");
 
+
     protected BaseServlet() {
     }
 
@@ -32,4 +33,6 @@ public class BaseServlet extends HttpServlet {
             response.setHeader("Cache-Control", "public, no-transform, max-age=" + seconds);
         }
     }
+
+
 }
