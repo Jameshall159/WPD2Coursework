@@ -39,6 +39,7 @@ class RouteModule extends ServletModule {
         serve("/logout").with(LogoutServlet.class);
         serve("/private").with(PrivatePageServlet.class);
         serve("/public").with(PublicPageServlet.class);
+        serve("/register").with(RegisterServlet.class);
 
         serve("/messages").with(MessagesServlet.class);
         serve("/messages/*").with(UserMessagesServlet.class);
