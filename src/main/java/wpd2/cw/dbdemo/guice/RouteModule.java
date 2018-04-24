@@ -31,6 +31,7 @@ class RouteModule extends ServletModule {
     static final Logger LOG = LoggerFactory.getLogger(RouteModule.class.getName());
 
 
+
     RouteModule() {}
 
     @Override
@@ -40,6 +41,7 @@ class RouteModule extends ServletModule {
         serve("/private").with(PrivatePageServlet.class);
         serve("/public").with(PublicPageServlet.class);
         serve("/register").with(RegisterServlet.class);
+//        serve("/menu").with(MenuServlet.class);
 
         serve("/messages").with(MessagesServlet.class);
         serve("/messages/*").with(UserMessagesServlet.class);

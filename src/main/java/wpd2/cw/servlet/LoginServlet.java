@@ -35,7 +35,7 @@ public class LoginServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = UserFuncs.getCurrentUser(request);
 
-        Map<String,String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
         params.put(USER_NAME_PARAM, userName);
 
         showView(response, LOGIN_TEMPLATE, params);
@@ -46,7 +46,7 @@ public class LoginServlet extends BaseServlet {
         String name = getString(request, UserFuncs.USERNAME_PARAMETER, "");
         String password = getString(request, UserFuncs.USERPASS_PARAMETER, "");
 
-        Map<String,String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
         params.put(USER_NAME_PARAM, name);
 
         if (name.length() == 0 || password.length() == 0) {
@@ -69,7 +69,9 @@ public class LoginServlet extends BaseServlet {
     private boolean checkUserNameAndPassword(String userName, String password) {
         if (h2User.isRegistered(userName)) {
             return h2User.login(userName, password);
+        } else {
+            return false;
+
         }
-        return false;
     }
 }
