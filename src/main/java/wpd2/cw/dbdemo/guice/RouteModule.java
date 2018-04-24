@@ -41,6 +41,8 @@ class RouteModule extends ServletModule {
         serve("/private").with(PrivatePageServlet.class);
         serve("/public").with(PublicPageServlet.class);
         serve("/register").with(RegisterServlet.class);
+        serve("/home").with(HomeServlet.class);
+
 //        serve("/menu").with(MenuServlet.class);
 
         serve("/messages").with(MessagesServlet.class);
