@@ -69,11 +69,8 @@ public class LoginServlet extends BaseServlet {
     private boolean checkUserNameAndPassword(String userName, String password) {
         if (h2User.isRegistered(userName)) {
             return h2User.login(userName, password);
-<<<<<<< HEAD
         } else {
             return false;
-=======
->>>>>>> 40f84a1fafea42cf622d318d4ced30bed56f0fab
         }
     }
 }
