@@ -71,10 +71,6 @@ public class LoginServlet extends BaseServlet {
             return h2User.login(userName, password);
         } else {
             return false;
-<<<<<<< HEAD
-=======
-
->>>>>>> 9cdc480de5ead288216e7f183be403ed5c2b4caa
         }
     }
 }
