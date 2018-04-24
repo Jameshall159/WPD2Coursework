@@ -1,4 +1,7 @@
-{{>head}}
+{{>homeNav}}
+
+
+<div class="container">
 <h1>Messages</h1>
 <p>Messages for {{user}}</p>
 <form action="/messages/{{user}}" method="POST">
@@ -18,5 +21,7 @@
     {{/matches}}
 </form>
 
-<p><a href="/messages">Home</a></p>
+<p><a href="/messages">Home</a>
+
+</div>
 {{>foot}}

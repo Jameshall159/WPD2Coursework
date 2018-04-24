@@ -1,19 +1,48 @@
+{{>homeNav}}
 
-{{>head}}
+<header class="bg-primary text-white">
+    <div class="container text-center">
+        <h1>Group Milestone Tracker</h1>
+        <p class="lead">Welcome to your group milestone tracker.</p>
+    </div>
+</header>
+
+<style>
+
+header {
+  padding: 154px 0 100px;
+}
+header.bg-primary{
+background-image: url(images/3.jpg);
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
+}
+
+    </style>
 <body>
-<div style="background-image: url(images/3.jpg); height:150px; margin-top:50px;">
-    <center><h1 style="color:white; padding:30px;">WELCOME TO THE MILESTONE APPLICATION</h1></center>
-</div>
 
-<br/>
-<div style="padding:15px;">
-    <p><a href="/login">Login Page</a></p>
-    <p><a href="/register">Register</a></p>
-    <p><a href="/messages">Messages</a></p>
-    <p><a href="/private">Private page (have to login to access)</a></p>
-    <form action="/logout" method="POST">
-        <button type="submit" style="border-radius:10px; font-size:18px;">Logout</button>
-    </form>
-</div>
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>About/How to use.</h2>
+                <p class="lead">This is a milestone tracker developed as part of Web Platform Development 2.</p>
+                <ul>
+                    <li>Heather is a weapon</li>
+                    <li>WOW</li>
+                    <li>Least it works</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 {{>foot}}

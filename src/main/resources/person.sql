@@ -12,4 +12,3 @@ CREATE TABLE IF NOT EXISTS message (
   p_id int,
   FOREIGN KEY (p_id) REFERENCES person(id)
 );
-
