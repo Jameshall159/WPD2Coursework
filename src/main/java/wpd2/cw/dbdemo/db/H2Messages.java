@@ -113,6 +113,21 @@ public class H2Messages extends H2Base implements IMessageDB {
         }
     }
 
+    @Override
+    public void update(long id, String message, String user) {
+        Connection conn = getConnection();
+        String ps = "UPDATE FROM messages WHERE id = ?";
+        try (PreparedStatement p = conn.prepareStatement(ps)) {
+            p.setLong(1, id);
+            p.setString(2, message);
+            p.setString(3, user);
+            p.setLong(4, new Date().getTime());
+            p.execute();
+        } catch (SQLException e) {
+            throw new H2MessagesException(e);
+        }
+    }
+
     private static Message rs2message(ResultSet rs) throws SQLException {
         return new Message(rs.getLong(1), rs.getString(2),
                 rs.getString(3), rs.getLong(4));
