@@ -1,0 +1,24 @@
+{{>homeNav}}
+
+<div class="container">
+<form style="padding-top:100px;" action="/messages" method="POST">
+    <h2>Add a new milestone {{user}}</h2>
+
+    <fieldset>
+        <div class="form-group">
+            <label for="disabledTextInput">Milestone Name</label>
+            <input type="text" name="message" class="form-control" placeholder="Exam deadline">
+        </div>
+        <div class="form-group">
+            <label for="disabledTextInput">Milestone Description</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="What is required?">
+        </div>
+        <div class="form-group">
+            <label for="disabledTextInput">Milestone Completion Date</label>
+            <input type='text' class="form-control" placeholder="mm/dd/yy 00:00:00" id='datetimepicker1' />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>
+</div>
+{{>foot}}
