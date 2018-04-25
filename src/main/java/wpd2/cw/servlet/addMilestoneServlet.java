@@ -71,7 +71,7 @@ public class addMilestoneServlet extends BaseServlet {
         }
         String message = request.getParameter(MESSAGE_PARAMETER);
         String user = UserFuncs.getCurrentUser(request);
-        db.add(message, user);
+        db .add(message, user);
         response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
     }
 
