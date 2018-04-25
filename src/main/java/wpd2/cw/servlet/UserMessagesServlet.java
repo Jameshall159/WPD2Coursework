@@ -26,7 +26,7 @@ public class UserMessagesServlet extends BaseServlet {
     private static final String USER_MESSAGES_TEMPLATE = "userMessages.mustache";
     private static final String MESSAGE_PARAMETER = "message";
     private static final String DESCRIPTION_PARAMETER = "description";
-    private static final String EXPECTED_PARAMETER = "expectedCompletion";
+    private static final String EXPECTED_PARAMETER = "expectedComplete";
     private static final String LINK_PARAMETER = "link";
     private static final String METHOD_PARAMETER = "method";
     private static final String ID_PARAMETER = "msgId";
