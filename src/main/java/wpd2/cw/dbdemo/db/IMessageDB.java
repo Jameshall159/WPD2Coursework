@@ -37,4 +37,7 @@ public interface IMessageDB {
      * @param id The id
      */
     void delete(long id);
+
+
+    void update(long id, String message, String user);
 }

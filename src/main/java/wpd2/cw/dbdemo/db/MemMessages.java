@@ -26,7 +26,7 @@ public class MemMessages implements IMessageDB {
 
     @Override
     public synchronized Message get(long id) {
-        for (Message m: messages) {
+        for (Message m : messages) {
             if (m.getId() == id) {
                 return m;
             }
@@ -53,9 +53,20 @@ public class MemMessages implements IMessageDB {
 
     @Override
     public synchronized void delete(long id) {
-        for (Message m: messages) {
+        for (Message m : messages) {
             if (id == m.getId()) {
                 messages.remove(m);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public synchronized void update(@NonNull long id, String message, String user) {
+        for (Message m : messages) {
+            if (id == m.getId()) {
+                Message me = new Message(index++, message, user,  new Date().getTime());
+                messages.set(1, me);
                 return;
             }
         }

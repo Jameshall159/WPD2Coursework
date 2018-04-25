@@ -21,7 +21,7 @@ class BaseServlet extends HttpServlet {
     //static final String PLAIN_TEXT_UTF_8 = "text/plain; charset=UTF-8";
     static final Charset CHARSET_UTF8 = Charset.forName("UTF-8");
 
-    static final List<Pattern> PROTECTED_PAGES = Arrays.asList(Pattern.compile("/private"), Pattern.compile("/messages"), Pattern.compile("/home"));
+    static final List<Pattern> PROTECTED_PAGES = Arrays.asList(Pattern.compile("/private"), Pattern.compile("/messages"), Pattern.compile("/home"), Pattern.compile("/addmilestone"));
     static final String LOGIN_PAGE = "/login";
 
     private final MustacheRenderer mustache;

@@ -13,6 +13,7 @@ import wpd2.cw.servlet.LogoutServlet;
 import wpd2.cw.servlet.PrivatePageServlet;
 import wpd2.cw.servlet.PublicPageServlet;
 import wpd2.cw.servlet.HomeServlet;
+import wpd2.cw.servlet.addMilestoneServlet;
 
 
 class BindingModule extends AbstractModule {
@@ -29,6 +30,7 @@ class BindingModule extends AbstractModule {
         bind(PublicPageServlet.class).in(Scopes.SINGLETON);
         bind(LogoutServlet.class).in(Scopes.SINGLETON);
         bind(HomeServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
+        bind(addMilestoneServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
 
 
         bind(H2User.class).toInstance(new H2User(new ConnectionSupplier(ConnectionSupplier.MEMORY)));
