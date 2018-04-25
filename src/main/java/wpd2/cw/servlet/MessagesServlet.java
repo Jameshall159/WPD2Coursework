@@ -23,6 +23,7 @@ public class MessagesServlet extends BaseServlet {
     private static final String MESSAGES_TEMPLATE = "messages.mustache";
     private static final String MESSAGE_PARAMETER = "message";
     private static final String DESCRIPTION_PARAMETER = "description";
+    private static final String EXPECTED_PARAMETER = "expectedCompletion";
     private static final String LINK_PARAMETER = "link";
 
     private final IMessageDB db;
@@ -54,10 +55,11 @@ public class MessagesServlet extends BaseServlet {
         }
         String message = request.getParameter(MESSAGE_PARAMETER);
         String description = request.getParameter(DESCRIPTION_PARAMETER);
+        String expectedComplete = request.getParameter(EXPECTED_PARAMETER);
         int actual = 0;
         String link = request.getParameter(LINK_PARAMETER);
         String user = UserFuncs.getCurrentUser(request);
-        db.add(message, description, user, actual, link);
+        db.add(message, description, user, expectedComplete, actual, link);
         response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
     }
 

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
+
 @Value
 public class Message {
     @SuppressWarnings("unused")
@@ -17,11 +18,11 @@ public class Message {
     private String description;
     private String user;
     private long created;
-    private long expectedComplete;
+    private String expectedComplete;
     private int actual;
     private String link;
 
-    public Message(long id, @NonNull String message, String description, @NonNull String user, long created, long expectedComplete,
+    public Message(long id, @NonNull String message, String description, @NonNull String user, long created, String expectedComplete,
                    int actual, String link) {
         this.id = id;
         this.message = message;
@@ -32,6 +33,7 @@ public class Message {
         this.actual = actual;
         this.link = link;
     }
+
 
     public String getCreatedDate() {
         return new Date(created).toString();

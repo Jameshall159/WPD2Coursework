@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -31,7 +30,7 @@ public class H2Messages extends H2Base implements IMessageDB {
     private void initTable(Connection conn) throws SQLException {
         execute(conn, "CREATE TABLE IF NOT EXISTS " +
                 "messages (id BIGINT AUTO_INCREMENT, message VARCHAR(255), description VARCHAR(255), user VARCHAR(255), " +
-                "created BIGINT, expectedComplete BIGINT, actual INT(2), link VARCHAR(255) PRIMARY KEY(id))");
+                "created BIGINT, expectedComplete VARCHAR(255), actual INT(2), link VARCHAR(255) PRIMARY KEY(id))");
     }
 
     @Override
@@ -69,15 +68,16 @@ public class H2Messages extends H2Base implements IMessageDB {
     }
 
     @Override
-    public void add(String message, String description, String user, int actual, String link) {
+    public void add(String message, String description, String user, String expectedComplete, int actual, String link) {
         String ps = "INSERT INTO messages (message, description, user, created, expectedComplete, actual, link) VALUES(?,?, ?,?,?,?,?)";
         Connection conn = getConnection();
+        java.util.Date d = new java.util.Date();
         try (PreparedStatement p = conn.prepareStatement(ps)) {
             p.setString(1, message);
             p.setString(2, description);
             p.setString(3, user);
-            p.setLong(4, new Date().getTime());
-            p.setLong(5, new Date().getTime());
+            p.setLong(4, d.getTime());
+            p.setString(5, expectedComplete);
             p.setInt(6,  actual);
             p.setString(7, link);
             p.execute();
@@ -134,7 +134,7 @@ public class H2Messages extends H2Base implements IMessageDB {
 
     private static Message rs2message(ResultSet rs) throws SQLException {
         return new Message(rs.getLong(1), rs.getString(2),
-                rs.getString(3), rs.getString(4), rs.getLong(5), rs.getLong(6),
+                rs.getString(3), rs.getString(4), rs.getLong(5), rs.getString(6),
                 rs.getInt(7), rs.getString(8));
     }
 

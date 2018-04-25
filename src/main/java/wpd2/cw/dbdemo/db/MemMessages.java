@@ -7,7 +7,6 @@ import wpd2.cw.dbdemo.model.Message;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +14,7 @@ import java.util.stream.Collectors;
 public class MemMessages implements IMessageDB {
     @SuppressWarnings("unused")
     static final Logger LOG = LoggerFactory.getLogger(MemMessages.class);
+    java.util.Date d = new java.util.Date();
 
     private final List<Message> messages;
     private long index;
@@ -40,8 +40,8 @@ public class MemMessages implements IMessageDB {
     }
 
     @Override
-    public synchronized void add(@NonNull String message, String description, String user, int actual, String link) {
-        Message m = new Message(index++, message, description, user, new Date().getTime(),  new Date().getTime(), actual, link);
+    public synchronized void add(@NonNull String message, String description, String user, String expectedComplete, int actual, String link) {
+        Message m = new Message(index++, message, description, user, d.getTime(), expectedComplete, actual, link);
         messages.add(m);
     }
 
