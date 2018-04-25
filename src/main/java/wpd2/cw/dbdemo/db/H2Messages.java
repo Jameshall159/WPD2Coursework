@@ -30,13 +30,13 @@ public class H2Messages extends H2Base implements IMessageDB {
 
     private void initTable(Connection conn) throws SQLException {
         execute(conn, "CREATE TABLE IF NOT EXISTS " +
-                "messages (id BIGINT AUTO_INCREMENT, message VARCHAR(255), user VARCHAR(255), " +
-                "created BIGINT, PRIMARY KEY(id))");
+                "messages (id BIGINT AUTO_INCREMENT, message VARCHAR(255), description VARCHAR(255), user VARCHAR(255), " +
+                "created BIGINT, expectedComplete BIGINT, actual INT(2), link VARCHAR(255) PRIMARY KEY(id))");
     }
 
     @Override
     public Message get(long id) {
-        String ps = "SELECT id, message, user, created FROM messages where id = ?";
+        String ps = "SELECT id, message, description, user, created, expectedComplete, actual, link FROM messages where id = ?";
         Connection conn = getConnection();
         try {
             PreparedStatement p = conn.prepareStatement(ps);
@@ -52,7 +52,7 @@ public class H2Messages extends H2Base implements IMessageDB {
 
     @Override
     public List<Message> list() {
-        String ps = "SELECT id, message, user, created FROM messages";
+        String ps = "SELECT id, message, description, user, created, expectedComplete, actual, link FROM messages";
         Connection conn = getConnection();
         try {
             List<Message> out = new ArrayList<>();
@@ -69,13 +69,17 @@ public class H2Messages extends H2Base implements IMessageDB {
     }
 
     @Override
-    public void add(String message, String user) {
-        String ps = "INSERT INTO messages (message, user, created) VALUES(?,?, ?)";
+    public void add(String message, String description, String user, int actual, String link) {
+        String ps = "INSERT INTO messages (message, description, user, created, expectedComplete, actual, link) VALUES(?,?, ?,?,?,?,?)";
         Connection conn = getConnection();
         try (PreparedStatement p = conn.prepareStatement(ps)) {
             p.setString(1, message);
-            p.setString(2, user);
-            p.setLong(3, new Date().getTime());
+            p.setString(2, description);
+            p.setString(3, user);
+            p.setLong(4, new Date().getTime());
+            p.setLong(5, new Date().getTime());
+            p.setInt(6,  actual);
+            p.setString(7, link);
             p.execute();
         } catch (SQLException e) {
             throw new H2MessagesException(e);
@@ -113,24 +117,25 @@ public class H2Messages extends H2Base implements IMessageDB {
         }
     }
 
-    @Override
-    public void update(long id, String message, String user) {
-        Connection conn = getConnection();
-        String ps = "UPDATE FROM messages WHERE id = ?";
-        try (PreparedStatement p = conn.prepareStatement(ps)) {
-            p.setLong(1, id);
-            p.setString(2, message);
-            p.setString(3, user);
-            p.setLong(4, new Date().getTime());
-            p.execute();
-        } catch (SQLException e) {
-            throw new H2MessagesException(e);
-        }
-    }
+//    @Override
+//    public void update(long id, String message, String user) {
+//        Connection conn = getConnection();
+//        String ps = "UPDATE FROM messages WHERE id = ?";
+//        try (PreparedStatement p = conn.prepareStatement(ps)) {
+//            p.setLong(1, id);
+//            p.setString(2, message);
+//            p.setString(3, user);
+//            p.setLong(4, new Date().getTime());
+//            p.execute();
+//        } catch (SQLException e) {
+//            throw new H2MessagesException(e);
+//        }
+//    }
 
     private static Message rs2message(ResultSet rs) throws SQLException {
         return new Message(rs.getLong(1), rs.getString(2),
-                rs.getString(3), rs.getLong(4));
+                rs.getString(3), rs.getString(4), rs.getLong(5), rs.getLong(6),
+                rs.getInt(7), rs.getString(8));
     }
 
     public static final class H2MessagesException extends RuntimeException {
