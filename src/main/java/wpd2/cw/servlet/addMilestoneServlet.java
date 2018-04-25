@@ -41,6 +41,8 @@ public class addMilestoneServlet extends BaseServlet {
 
     private static final String MESSAGES_TEMPLATE = "addmilestone.mustache";
     private static final String MESSAGE_PARAMETER = "message";
+    private static final String DESCRIPTION_PARAMETER = "description";
+    private static final String LINK_PARAMETER = "link";
 
     private final IMessageDB db;
 
@@ -70,8 +72,11 @@ public class addMilestoneServlet extends BaseServlet {
             return;
         }
         String message = request.getParameter(MESSAGE_PARAMETER);
+        String description = request.getParameter(DESCRIPTION_PARAMETER);
+        int actual = 0;
+        String link = request.getParameter(LINK_PARAMETER);
         String user = UserFuncs.getCurrentUser(request);
-        db.add(message, user);
+        db.add(message, description, user, actual, link);
         response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
     }
 
