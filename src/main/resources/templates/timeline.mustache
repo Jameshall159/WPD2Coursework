@@ -1,7 +1,5 @@
-<div class="page">
-    <div class="page__demo">
-        <div class="main-container page__container">
-            <div class="timeline">
+
+            <center><div class="timeline" style="width:50%; margin-top:20px;">
 
                     <div class="timeline__box">
                         <div class="timeline__date" style="background-color:#474e5d; border-radius:10px;">
@@ -39,21 +37,15 @@
 
 
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div></center>
+
 
 <style>
-
-
     .timeline{
         --uiTimelineMainColor: var(--timelineMainColor, #222);
         --uiTimelineSecondaryColor: var(--timelineSecondaryColor, #fff);
-
         position: relative;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+
     }
 
     .timeline:before{
@@ -61,25 +53,7 @@
         width: 4px;
         height: 100%;
         background-color: #474e5d;
-
         position: absolute;
-        top: 0;
-    }
-
-    .timeline__group{
-        position: relative;
-    }
-
-    .timeline__group:not(:first-of-type){
-        margin-top: 4rem;
-    }
-
-    .timeline__year{
-        padding: .5rem 1.5rem;
-        color: var(--uiTimelineSecondaryColor);
-
-        position: absolute;
-        left: 0;
         top: 0;
     }
 
@@ -163,10 +137,6 @@
             left: 0;
         }
 
-        .timeline__group{
-            padding-top: 40px;
-        }
-
         .timeline__box{
             padding-left: 20px;
             padding-top: 70px;
@@ -204,19 +174,6 @@
     * demo page
     */
 
-    @media screen and (min-width: 768px){
-
-        html{
-            font-size: 62.5%;
-        }
-    }
-
-    @media screen and (max-width: 767px){
-
-        html{
-            font-size: 50%;
-        }
-    }
 
     body{
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
@@ -238,59 +195,5 @@
     p:last-child{
         margin-bottom: 0;
     }
-
-    .page{
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
-    .page__demo{
-        flex-grow: 1;
-    }
-
-    .main-container{
-        max-width: 960px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .page__container{
-        padding-top: 30px;
-        padding-bottom: 30px;
-        max-width: 800px;
-    }
-
-    .footer{
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        text-align: center;
-        font-size: 1.4rem;
-    }
-
-    .footer__link{
-        text-decoration: none;
-        color: inherit;
-    }
-
-    @media screen and (min-width: 361px){
-
-        .footer__container{
-            display: flex;
-            justify-content: space-between;
-        }
-    }
-
-    @media screen and (max-width: 360px){
-
-        .melnik909{
-            display: none;
-        }
-    }
-
 
 </style>
