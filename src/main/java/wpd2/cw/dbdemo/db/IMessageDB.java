@@ -23,7 +23,7 @@ public interface IMessageDB {
      * @param message  Message text (not null)
      * @param user User name (not null)
      */
-    void add(String message, String user);
+    void add(String message, String description, String user, int actual, String link);
 
     /**
      * List messages for a given user
@@ -38,6 +38,6 @@ public interface IMessageDB {
      */
     void delete(long id);
 
-
-    void update(long id, String message, String user);
+//
+//    void update(long id, String message, String user);
 }

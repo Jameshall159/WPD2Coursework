@@ -40,8 +40,8 @@ public class MemMessages implements IMessageDB {
     }
 
     @Override
-    public synchronized void add(@NonNull String message, String user) {
-        Message m = new Message(index++, message, user, new Date().getTime());
+    public synchronized void add(@NonNull String message, String description, String user, int actual, String link) {
+        Message m = new Message(index++, message, description, user, new Date().getTime(),  new Date().getTime(), actual, link);
         messages.add(m);
     }
 
@@ -61,14 +61,14 @@ public class MemMessages implements IMessageDB {
         }
     }
 
-    @Override
-    public synchronized void update(@NonNull long id, String message, String user) {
-        for (Message m : messages) {
-            if (id == m.getId()) {
-                Message me = new Message(index++, message, user,  new Date().getTime());
-                messages.set(1, me);
-                return;
-            }
-        }
-    }
+//    @Override
+//    public synchronized void update(@NonNull long id, String message, String user) {
+//        for (Message m : messages) {
+//            if (id == m.getId()) {
+//                Message me = new Message(index++, message, user,  new Date().getTime());
+//                messages.set(1, me);
+//                return;
+//            }
+//        }
+//    }
 }
