@@ -1,12 +1,8 @@
 {{>homeNav}}
 
-<div class="container">
-<h1>Messages</h1>
-{{#user}}
-<form action="/messages/{{user}}">
-    <input type="submit" value="Your messages" style="margin-top:1em;"/>
-</form>
-{{/user}}
+<div class="container" style="padding-top:100px;">
+<h1>Milestones</h1>
+
 
 <div class="container">
 <p>Current Milestones.</p>
@@ -14,9 +10,11 @@
     <table class="table container">
         <thead>
         <tr>
-            <th scope="col">Message</th>
+            <th scope="col">Milestone Name</th>
             <th scope="col">Date Created</th>
             <th scope="col">User</th>
+            <th scope="col">Actions</th>
+
         </tr>
         </thead>
         <tbody>
@@ -30,20 +28,22 @@
         <td>{{message}}</td>
             <td>{{createdDate}}</td>
             <td>{{user}}</td>
+            <td><button type="button" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+            </td>
 
         </tr>
+
         {{/messages}}
         </tbody>
     </table>
 </div>
 
-
-<p>Add a new milestone {{user}}</p>
-<form action="/messages" method="POST">
-    <label>Message:<input type="text" name="message" placeholder="message"/></label>
-    <input type="submit" value="Create" style="margin-top:1em;"/>
-</form>
-<p><a href="/home">Home</a></p>
+    {{#user}}
+        <form action="/messages/{{user}}">
+            <input type="submit" value="Your milestones" style="margin-top:1em;"/>
+        </form>
+    {{/user}}
 
 </div>
 {{>foot}}
