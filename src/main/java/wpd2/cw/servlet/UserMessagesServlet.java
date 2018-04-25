@@ -25,6 +25,8 @@ public class UserMessagesServlet extends BaseServlet {
 
     private static final String USER_MESSAGES_TEMPLATE = "userMessages.mustache";
     private static final String MESSAGE_PARAMETER = "message";
+    private static final String DESCRIPTION_PARAMETER = "description";
+    private static final String LINK_PARAMETER = "link";
     private static final String METHOD_PARAMETER = "method";
     private static final String ID_PARAMETER = "msgId";
 
@@ -70,13 +72,16 @@ public class UserMessagesServlet extends BaseServlet {
             doDelete(request, response);
         } else {
             String message = request.getParameter(MESSAGE_PARAMETER);
+            String description = request.getParameter(DESCRIPTION_PARAMETER);
+            int actual = 0;
+            String link = request.getParameter(LINK_PARAMETER);
             String userName = userFromRequest(request);
             if (!userDB.isRegistered(userName)) {
                 String err = "can't find user " + userName;
                 issue("text/plain", HttpServletResponse.SC_NOT_FOUND, err.getBytes(Charsets.UTF_8), response);
                 return;
             }
-            db.add(message, userName);
+            db.add(message, description, userName, actual, link);
             response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
     }
