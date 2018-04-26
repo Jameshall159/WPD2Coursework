@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Date;
 
 
 public class MemMessages implements IMessageDB {
@@ -61,14 +62,14 @@ public class MemMessages implements IMessageDB {
         }
     }
 
-//    @Override
-//    public synchronized void update(@NonNull long id, String message, String user) {
-//        for (Message m : messages) {
-//            if (id == m.getId()) {
-//                Message me = new Message(index++, message, user,  new Date().getTime());
-//                messages.set(1, me);
-//                return;
-//            }
-//        }
-//    }
+    @Override
+    public synchronized void update(@NonNull long id, String message, String description, String user, String expectedComplete, int actual, String link ) {
+        for (Message m : messages) {
+            if (id == m.getId()) {
+                Message me = new Message(index++, message, description, user, new Date().getTime(), expectedComplete, actual, link);
+                messages.set(1, me);
+                return;
+            }
+        }
+    }
 }
