@@ -30,11 +30,11 @@ section {
 
 <body style="background-color:white;">
 
-<div class="container text-center">
+<div class="container text-center" style="padding-top: 20px">
     <div class="page-header">
     </div>
     {{^messages}}
-        There are no messages
+        <h3>There are no milestones. <a href="/addMilestone" class="href">Click to add now!</a></h3>
     {{/messages}}
 
     {{#messages}}
@@ -196,6 +196,14 @@ section {
     .timeline-body > p + p {
         margin-top: 5px;
     }
+
+    .timeline-panel:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+     transition: all 200ms ease-in;
+
+}
 
 
 
