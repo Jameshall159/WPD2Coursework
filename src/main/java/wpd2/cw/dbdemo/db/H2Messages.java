@@ -117,6 +117,25 @@ public class H2Messages extends H2Base implements IMessageDB {
     }
 
     @Override
+    public List<Message> link(String link) {
+        String ps = "SELECT id, message, user, created, link FROM messages WHERE link = ?";
+        Connection conn = getConnection();
+        try {
+            List<Message> out = new ArrayList<>();
+            PreparedStatement p = conn.prepareStatement(ps);
+            p.setString(1, link);
+            ResultSet rs = p.executeQuery();
+            while (rs.next()) {
+                Message m = rs2message(rs);
+                out.add(m);
+            }
+            return out;
+        } catch (SQLException e) {
+            throw new H2MessagesException(e);
+        }
+    }
+
+    @Override
     public void delete(long id) {
         Connection conn = getConnection();
         String ps = "DELETE FROM messages WHERE id = ?";
@@ -144,6 +163,19 @@ public class H2Messages extends H2Base implements IMessageDB {
             p.execute();
         } catch (SQLException e) {
             throw new H2MessagesException(e);
+        }
+    }
+
+    public boolean postExists(String link) {
+        try (PreparedStatement ps = getConnection().prepareStatement("SELECT 1 FROM messages WHERE link = ?")) {
+            ps.setString(1, link);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            return false;
         }
     }
 

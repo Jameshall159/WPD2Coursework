@@ -53,6 +53,12 @@ public class MemMessages implements IMessageDB {
     }
 
     @Override
+    public synchronized List<Message> link(@NonNull String link) {
+        List<Message> out = messages.stream().filter(m -> link.equals(m.getLink())).collect(Collectors.toList());
+        return Collections.unmodifiableList(out);
+    }
+
+    @Override
     public synchronized void delete(long id) {
         for (Message m : messages) {
             if (id == m.getId()) {

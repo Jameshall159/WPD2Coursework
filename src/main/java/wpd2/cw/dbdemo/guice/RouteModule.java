@@ -24,6 +24,9 @@ class RouteModule extends ServletModule {
         serve("/addMilestone").with(addMilestoneServlet.class);
 
 
+
+        serve("/sharedmilestone/*").with(SharedServlet.class);
+
         serve("/messages").with(MessagesServlet.class);
         serve("/messages/*").with(UserMessagesServlet.class);
     }

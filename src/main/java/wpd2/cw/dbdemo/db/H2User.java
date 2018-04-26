@@ -64,6 +64,19 @@ public class H2User extends H2Base {
         }
     }
 
+//    public boolean postExists(String link) {
+//        try (PreparedStatement ps = getConnection().prepareStatement("SELECT 1 FROM messages WHERE link = ?")) {
+//            ps.setString(1, link);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                return true;
+//            }
+//            return false;
+//        } catch (SQLException e) {
+//            return false;
+//        }
+//    }
+
     private boolean loginSQL(String userName, String password) throws SQLException {
         try (PreparedStatement ps = getConnection().prepareStatement("SELECT hash FROM users WHERE name = ?")) {
             ps.setString(1, userName);

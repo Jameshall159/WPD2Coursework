@@ -33,6 +33,13 @@ public interface IMessageDB {
     List<Message> user(String user);
 
     /**
+     * List messages for a given user from link
+     * @param link  Link (not null)
+     * @return  The messages from this link, or the empty list if none
+     */
+    List<Message> link(String link);
+
+    /**
      * Delete message with the given id, if it exists
      * @param id The id
      */
