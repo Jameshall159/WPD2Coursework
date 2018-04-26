@@ -7,15 +7,22 @@
     <fieldset>
         <div class="form-group">
             <label for="disabledTextInput">Milestone Name</label>
+<<<<<<< HEAD
             <input type="text" name="message" class="form-control" placeholder="Milestone Name">
+=======
+            <input type="text" name="message" class="form-control" placeholder="Exam deadline" required>
+>>>>>>> 2ed3c8f12dcd22119d62eea6a4580382cb0fc193
         </div>
         <div class="form-group">
             <label for="disabledTextInput">Milestone Description</label>
-            <input type="text" name="description" id="disabledTextInput" class="form-control" placeholder="What is required?">
+            <input type="text" name="description" id="disabledTextInput" class="form-control" placeholder="What is required?" required>
         </div>
         <div class="form-group">
             <label for="disabledTextInput">Milestone Completion Date</label>
-            <input type='text' name="expectedComplete" class="form-control" placeholder="mm/dd/yy 00:00:00" id='datetimepicker1' />
+            <input type='text' name="expectedComplete" class="form-control" placeholder="mm/dd/yy 00:00:00" id='datetimepicker1' required/>
+        </div>
+        <div class="form-group">
+            <input type='text' name="link" class="form-control" placeholder="mm/dd/yy 00:00:00" id='link' hidden/>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -23,5 +30,23 @@
 </form>
 </div>
 
+<script>
 
+    var aLink =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+ const values = {
+
+  link: aLink
+}
+
+const keys = Object.keys(values)
+const length = keys.length
+
+for(let i = 0; i < length; i++){
+    const key = keys[i]
+    document.getElementsByName(key)[0].value = values[key]
+}
+
+
+</script>
 {{>foot}}
