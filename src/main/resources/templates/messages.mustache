@@ -8,8 +8,6 @@
     {{^messages}}
         <h3>There are no milestones. <a href="/addMilestone" class="href">Click to add now!</a></h3>
     {{/messages}}
-    {{#messages}}
-
 <p>Current Milestones.</p>
 
     <table class="table container">
@@ -23,6 +21,8 @@
             <th scope="col">Link</th>
         </tr>
         </thead>
+        {{#messages}}
+
         <tbody>
 
         <tr>
@@ -40,7 +40,9 @@
 
 
         </tbody>
-    </table>
+    {{/messages}}
+
+</table>
 </div>
 
     {{#user}}
@@ -49,7 +51,6 @@
         </form>
     {{/user}}
 
-    {{/messages}}
 
 </div>
 {{>foot}}
