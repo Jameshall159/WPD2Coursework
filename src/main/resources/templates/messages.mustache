@@ -5,6 +5,11 @@
 
 
 <div class="container">
+    {{^messages}}
+        <h3>There are no milestones. <a href="/addMilestone" class="href">Click to add now!</a></h3>
+    {{/messages}}
+    {{#messages}}
+
 <p>Current Milestones.</p>
 
     <table class="table container">
@@ -16,16 +21,10 @@
             <th scope="col">Date Created</th>
             <th scope="col">User</th>
             <th scope="col">Link</th>
-
-            <th scope="col">Actions</th>
-
         </tr>
         </thead>
         <tbody>
-        {{^messages}}
-            There are no messages
-        {{/messages}}
-        {{#messages}}
+
         <tr>
 
 
@@ -36,13 +35,10 @@
             <td>{{user}}</td>
             <td>{{link}}</td>
 
-            <td><button type="button" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
-                <button type="button" class="btn btn-outline-danger">Delete</button>
-            </td>
 
         </tr>
 
-        {{/messages}}
+
         </tbody>
     </table>
 </div>
@@ -52,6 +48,8 @@
             <input type="submit" value="Your milestones" style="margin-top:1em;"/>
         </form>
     {{/user}}
+
+    {{/messages}}
 
 </div>
 {{>foot}}
