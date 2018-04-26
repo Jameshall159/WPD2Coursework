@@ -26,10 +26,54 @@ section {
 }
     </style>
 
+
+
 <body style="background-color:white;">
 
-<div style="margin-top:40px;">
-{{>timeline}}
+<div class="container">
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Milestone Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date To Complete</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">User</th>
+            <th scope="col">Link</th>
+
+            <th scope="col">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {{^messages}}
+            There are no messages
+        {{/messages}}
+        {{#messages}}
+            <tr>
+
+
+                <td>{{message}}</td>
+                <td>{{description}}</td>
+                <td>{{expectedComplete}}</td>
+                <td>{{createdDate}}</td>
+                <td>{{user}}</td>
+                <td>{{link}}</td>
+
+                <td><button type="button" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
+                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                </td>
+
+            </tr>
+
+        {{/messages}}
+        </tbody>
+    </table>
 </div>
+
+
+<!--<div style="margin-top:40px;">-->
+<!--{{>timeline}}-->
+<!--</div>-->
 
 {{>foot}}

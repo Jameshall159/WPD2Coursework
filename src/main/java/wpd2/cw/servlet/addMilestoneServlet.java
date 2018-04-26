@@ -78,7 +78,7 @@ public class addMilestoneServlet extends BaseServlet {
         return b.toString();
     }
 
-    String link5 = randomString(7)
+    String link5 = randomString(7);
 
     private static String base = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabsdefghijklmnopqrstuvwxyz";
     private static Random random = new Random();

@@ -61,6 +61,7 @@ public class UserMessagesServlet extends BaseServlet {
             map.put("messages", messages);
         }
         showView(response, USER_MESSAGES_TEMPLATE, map);
+
     }
 
     @Override
