@@ -10,16 +10,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Random;
 
 public class H2Messages extends H2Base implements IMessageDB {
     @SuppressWarnings("unused")
     static final Logger LOG = LoggerFactory.getLogger(H2Messages.class);
 
-    public String generateString() {
-        String uuid = UUID.randomUUID().toString();
-        return "uuid = " + uuid;
+    public static String randomString(int length){
+        StringBuilder b = new StringBuilder();
+        for(int i = 0; i < length; i++){
+            b.append(base.charAt(random.nextInt(base.length())));
+        }
+        return b.toString();
     }
+
+    private static String base = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabsdefghijklmnopqrstuvwxyz";
+    private static Random random = new Random();
 
     public H2Messages(ConnectionSupplier connectionSupplier) {
         super(connectionSupplier.provide());
@@ -84,7 +90,7 @@ public class H2Messages extends H2Base implements IMessageDB {
             p.setLong(4, d.getTime());
             p.setString(5, expectedComplete);
             p.setInt(6,  actual);
-            p.setString(7, generateString());
+            p.setString(7, link);
             p.execute();
         } catch (SQLException e) {
             throw new H2MessagesException(e);
