@@ -50,7 +50,7 @@ public class SharedServlet extends BaseServlet {
         }
         String link = linkFromRequest(request);
         String loggedInUser = UserFuncs.getCurrentUser(request);
-        if (!userDB.isRegistered(link)) {
+        if (db.link(link) == null) {
             String err = "No such milestone: " + link;
             issue("text/plain", HttpServletResponse.SC_NOT_FOUND, err.getBytes(Charsets.UTF_8), response);
             return;
@@ -59,7 +59,7 @@ public class SharedServlet extends BaseServlet {
         map.put("user", link);
         map.put("matches", loggedInUser.equals(loggedInUser));
 
-        List<Message> messages = db.user(link);
+        List<Message> messages = db.link(link);
         if (messages.size() > 0) {
             map.put("messages", messages);
         }
