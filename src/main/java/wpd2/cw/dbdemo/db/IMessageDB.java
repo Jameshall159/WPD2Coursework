@@ -38,6 +38,6 @@ public interface IMessageDB {
      */
     void delete(long id);
 
-//
-//    void update(long id, String message, String user);
+
+    void update(long id, String message, String description, String user, String expectedComplete, int actual, String link );
 }
