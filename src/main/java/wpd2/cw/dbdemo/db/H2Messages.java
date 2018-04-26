@@ -10,12 +10,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.UUID;
 
 public class H2Messages extends H2Base implements IMessageDB {
     @SuppressWarnings("unused")
     static final Logger LOG = LoggerFactory.getLogger(H2Messages.class);
 
+    public String generateString() {
+        String uuid = UUID.randomUUID().toString();
+        return "uuid = " + uuid;
+    }
 
     public H2Messages(ConnectionSupplier connectionSupplier) {
         super(connectionSupplier.provide());
@@ -72,6 +76,7 @@ public class H2Messages extends H2Base implements IMessageDB {
         String ps = "INSERT INTO messages (message, description, user, created, expectedComplete, actual, link) VALUES(?,?, ?,?,?,?,?)";
         Connection conn = getConnection();
         java.util.Date d = new java.util.Date();
+
         try (PreparedStatement p = conn.prepareStatement(ps)) {
             p.setString(1, message);
             p.setString(2, description);
@@ -79,7 +84,7 @@ public class H2Messages extends H2Base implements IMessageDB {
             p.setLong(4, d.getTime());
             p.setString(5, expectedComplete);
             p.setInt(6,  actual);
-            p.setString(7, link);
+            p.setString(7, generateString());
             p.execute();
         } catch (SQLException e) {
             throw new H2MessagesException(e);
