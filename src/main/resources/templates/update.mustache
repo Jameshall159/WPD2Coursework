@@ -1,0 +1,16 @@
+{{>homeNav}}
+
+
+<div class="container">
+    <h1 style="margin-top:80px;">Messages</h1>
+    <form action="/update/{{message}}" method="POST">
+    </form>
+{{#messages}}
+<ul>
+        {{#matches}}<input value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}}
+</ul>
+{{/messages}}
+    <p><center><a href="/messages" style="color:black; font-size:15px; margin-top:20px;">Back to the Home Page</a></center>
+
+</div>
+{{>foot}}
