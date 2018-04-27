@@ -104,24 +104,30 @@ public class UpdateServlet extends BaseServlet {
         if (!authOK(request, response)) {
             return;
         }
-        String method = getString(request, METHOD_PARAMETER, "post");
-        if ("delete".equals(method)) {
-            doDelete(request, response);
-        } else {
+        long id = getLong(request, ID_PARAMETER);
             String message = request.getParameter(MESSAGE_PARAMETER);
             String description = request.getParameter(DESCRIPTION_PARAMETER);
             String expectedComplete = request.getParameter(EXPECTED_PARAMETER);
             int actual = 0;
             String link = request.getParameter(LINK_PARAMETER);
             String userName = userFromRequest(request);
-            if (!userDB.isRegistered(userName)) {
+//        Message m = new Message();
+//        m.setid(id);
+//        e.setName(name);
+//        e.setPassword(password);
+//        e.setEmail(email);
+//        e.setCountry(country);
+        if (!userDB.isRegistered(userName)) {
                 String err = "Milestone URL invalid " + userName;
                 issue("text/plain", HttpServletResponse.SC_NOT_FOUND, err.getBytes(Charsets.UTF_8), response);
                 return;
             }
-            db.add(message, description, userName, expectedComplete, actual, link);
-            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
+            db.update(id, message, description, userName, expectedComplete, actual, link);
+        response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
     }
-}
+
+
+
+
 
