@@ -8,14 +8,12 @@
     <table class="table container">
         <thead>
         <tr>
-            <th scope="col">Check</th>
             <th scope="col">Milestone Name</th>
             <th scope="col">Description</th>
             <th scope="col">Date To Complete</th>
             <th scope="col">Date Created</th>
             <th scope="col">User</th>
             <th scope="col">Link</th>
-            <th scope="col">Actions</th>
 
         </tr>
         </thead>
@@ -27,8 +25,7 @@
             {{#messages}}
                 <tr>
 
-                    <td>{{#matches}}<input type="radio" name="msgId" value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}} </td>
-                    <td>{{message}}</td>
+                   <td>{{message}}</td>
                     <td>{{description}}</td>
                     <td>{{expectedComplete}}</td>
                     <td>{{createdDate}}</td>
