@@ -135,6 +135,7 @@ public class H2Messages extends H2Base implements IMessageDB {
         }
     }
 
+
     @Override
     public void delete(long id) {
         Connection conn = getConnection();

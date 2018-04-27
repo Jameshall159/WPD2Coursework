@@ -27,7 +27,6 @@ class BindingModule extends AbstractModule {
         bind(LogoutServlet.class).in(Scopes.SINGLETON);
         bind(HomeServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
         bind(addMilestoneServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
-        bind(UpdateServlet.class).in(Scopes.SINGLETON);
 
 
         bind(H2User.class).toInstance(new H2User(new ConnectionSupplier(ConnectionSupplier.MEMORY)));

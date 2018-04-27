@@ -39,6 +39,7 @@ public interface IMessageDB {
      */
     List<Message> link(String link);
 
+
     /**
      * Delete message with the given id, if it exists
      * @param id The id

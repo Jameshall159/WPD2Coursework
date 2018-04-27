@@ -8,6 +8,7 @@ import wpd2.cw.dbdemo.db.IMessageDB;
 import wpd2.cw.dbdemo.model.Message;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+@Singleton
 public class UpdateServlet extends BaseServlet {
 
     @SuppressWarnings("unused")
@@ -52,7 +54,7 @@ public class UpdateServlet extends BaseServlet {
         map.put("user", userName);
         map.put("matches", loggedInUser.equals(userName));
 
-        List<Message> messages = db.user(userName);
+        List<Message> messages = db.link(link);
         if (messages.size() > 0) {
             map.put("messages", messages);
         }

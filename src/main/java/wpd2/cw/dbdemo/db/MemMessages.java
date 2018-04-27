@@ -58,6 +58,9 @@ public class MemMessages implements IMessageDB {
         return Collections.unmodifiableList(out);
     }
 
+
+
+
     @Override
     public synchronized void delete(long id) {
         for (Message m : messages) {

@@ -22,11 +22,12 @@ class RouteModule extends ServletModule {
         serve("/register").with(RegisterServlet.class);
         serve("/home").with(HomeServlet.class);
         serve("/addMilestone").with(addMilestoneServlet.class);
-        serve("/update").with(UpdateServlet.class);
 
 
 
         serve("/sharedmilestone/*").with(SharedServlet.class);
+        serve("/update/*").with(UpdateServlet.class);
+
 
         serve("/messages").with(MessagesServlet.class);
         serve("/messages/*").with(UserMessagesServlet.class);
