@@ -3,14 +3,55 @@
 
 <div class="container">
     <h1 style="margin-top:80px;">Messages</h1>
-    <form action="/update/{{message}}" method="POST">
-    </form>
-{{#messages}}
-<ul>
-        {{#matches}}<input value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}}
-</ul>
-{{/messages}}
-    <p><center><a href="/messages" style="color:black; font-size:15px; margin-top:20px;">Back to the Home Page</a></center>
 
-</div>
+
+            <table class="table container">
+                <thead>
+                <tr>
+                    <th scope="col">Check</th>
+                    <th scope="col">Milestone Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date To Complete</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <form action="/update/{{link}}" method="POST">
+                    {{^messages}}
+                        <label>There are no messages to update {{user}}</label>
+                    {{/messages}}
+                    {{#messages}}
+                        <tr>
+
+                            <td>{{#matches}}<input type="radio" name="msgId" value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}} </td>
+                            <td>{{message}}</td>
+                            <td>{{description}}</td>
+                            <td>{{expectedComplete}}</td>
+                            <td>{{createdDate}}</td>
+                            <td>{{user}}</td>
+                            <td>{{link}}</td>
+
+
+                            <td><center>
+                                {{#matches}}
+                                    <button type="button" style="margin-bottom:10px;" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
+                                    <input type="hidden" name="method" value="delete">
+                                    <button type="submit" style="margin-top:10px;" value="Delete" class="btn btn-outline-danger">Delete</button>
+                                {{/matches}}
+                            </center>
+                            </td>
+
+                        </tr>
+
+
+                    {{/messages}}
+
+
+                </form>
+
+        </div>
 {{>foot}}

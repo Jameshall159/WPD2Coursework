@@ -9,11 +9,7 @@ import wpd2.cw.dbdemo.db.ConnectionSupplier;
 import wpd2.cw.dbdemo.db.H2User;
 import wpd2.cw.dbdemo.db.IMessageDB;
 import wpd2.cw.dbdemo.db.MemMessages;
-import wpd2.cw.servlet.LogoutServlet;
-import wpd2.cw.servlet.PrivatePageServlet;
-import wpd2.cw.servlet.PublicPageServlet;
-import wpd2.cw.servlet.HomeServlet;
-import wpd2.cw.servlet.addMilestoneServlet;
+import wpd2.cw.servlet.*;
 
 
 class BindingModule extends AbstractModule {
@@ -31,6 +27,7 @@ class BindingModule extends AbstractModule {
         bind(LogoutServlet.class).in(Scopes.SINGLETON);
         bind(HomeServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
         bind(addMilestoneServlet.class).in(Scopes.SINGLETON);  // only one instance in the whole app
+        bind(UpdateServlet.class).in(Scopes.SINGLETON);
 
 
         bind(H2User.class).toInstance(new H2User(new ConnectionSupplier(ConnectionSupplier.MEMORY)));

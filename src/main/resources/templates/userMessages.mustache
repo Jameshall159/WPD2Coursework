@@ -38,7 +38,12 @@
 
         <td><center>
     {{#matches}}
-            <button type="button" style="margin-bottom:10px;" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
+
+
+            <button type="button" style="margin-bottom:10px;" class="btn btn-outline-primary">View</button>
+
+        <input type="hidden" name="method" value="update">
+        <button type="submit" class="btn btn-outline-secondary" value="Update">Edit</button>
             <input type="hidden" name="method" value="delete">
             <button type="submit" style="margin-top:10px;" value="Delete" class="btn btn-outline-danger">Delete</button>
     {{/matches}}
@@ -52,13 +57,7 @@
 
 
 </form>
-{{#messages}}
-    {{#matches}}
-    <form action="/update/{{message}}" method ="POST">
-        <input type="submit" value="Update" style="margin-top:1em;"/>
-    </form>
-{{/matches}}
-{{/messages}}
+
 
 </div>
 {{>foot}}

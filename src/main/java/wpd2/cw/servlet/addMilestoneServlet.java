@@ -44,7 +44,6 @@ public class addMilestoneServlet extends BaseServlet {
     private static final String MESSAGE_PARAMETER = "message";
     private static final String DESCRIPTION_PARAMETER = "description";
     private static final String EXPECTED_PARAMETER = "expectedComplete";
-//    private static final String LINK_PARAMETER = "link";
 
     private final IMessageDB db;
 
