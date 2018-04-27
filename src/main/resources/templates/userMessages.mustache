@@ -8,7 +8,7 @@
     <table class="table container">
         <thead>
         <tr>
-            <th scope="col">Check</th>
+            <th scope="col" style="width:40px;">Check</th>
             <th scope="col">Milestone Name</th>
             <th scope="col">Description</th>
             <th scope="col">Date To Complete</th>
@@ -27,7 +27,7 @@
 {{#messages}}
     <tr>
 
-        <td>{{#matches}}<input type="radio" name="msgId" value="{{id}}">{{/matches}} Message: {{message}} Created: {{createdDate}} By: {{user}} </td>
+        <td>{{#matches}}<input type="radio" name="msgId" value="{{id}}">{{/matches}} </td>
         <td>{{message}}</td>
         <td>{{description}}</td>
         <td>{{expectedComplete}}</td>

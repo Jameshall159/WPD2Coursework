@@ -4,9 +4,8 @@
 <h1>Milestones</h1>
 
 
-<div class="container">
     {{^messages}}
-        <h3>There are no milestones. <a href="/addMilestone" class="href">Click to add now!</a></h3>
+        <h3>There are no Milestones. <a href="/addMilestone" class="href">Click to Add Now!</a></h3>
     {{/messages}}
 <p>Current Milestones.</p>
 
@@ -43,7 +42,6 @@
     {{/messages}}
 
 </table>
-</div>
 
     {{#user}}
         <form action="/messages/{{user}}">
