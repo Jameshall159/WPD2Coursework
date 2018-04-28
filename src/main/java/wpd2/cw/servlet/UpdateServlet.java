@@ -88,9 +88,9 @@ public class UpdateServlet extends BaseServlet {
         return "";
     }
 
-    public static String randomString(int length){
+    public static String randomString(int length) {
         StringBuilder b = new StringBuilder();
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             b.append(base.charAt(random.nextInt(base.length())));
         }
         return b.toString();
@@ -106,15 +106,12 @@ public class UpdateServlet extends BaseServlet {
         if (!authOK(request, response)) {
             return;
         }
-<<<<<<< HEAD
         String method = getString(request, METHOD_PARAMETER, "post");
         if ("delete".equals(method)) {
             doDelete(request, response);
         } else {
             String user = request.getParameter(USER_PARAMETER);
-=======
-        long id = getLong(request, ID_PARAMETER);
->>>>>>> 0c2a38238c5e28a20e158711d6819b58ecc2cbac
+            long id = getLong(request, ID_PARAMETER);
             String message = request.getParameter(MESSAGE_PARAMETER);
             String description = request.getParameter(DESCRIPTION_PARAMETER);
             String expectedComplete = request.getParameter(EXPECTED_PARAMETER);
@@ -127,20 +124,16 @@ public class UpdateServlet extends BaseServlet {
 //        e.setPassword(password);
 //        e.setEmail(email);
 //        e.setCountry(country);
-        if (!userDB.isRegistered(userName)) {
+            if (!userDB.isRegistered(userName)) {
                 String err = "Milestone URL invalid " + userName;
                 issue("text/plain", HttpServletResponse.SC_NOT_FOUND, err.getBytes(Charsets.UTF_8), response);
                 return;
             }
-<<<<<<< HEAD
-            db.update(message, description, user, expectedComplete, actual, link );
+            db.update(message, description, user, expectedComplete, actual, link);
             response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
-=======
-            db.update(id, message, description, userName, expectedComplete, actual, link);
-        response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
->>>>>>> 0c2a38238c5e28a20e158711d6819b58ecc2cbac
         }
     }
+}
 
 
 
