@@ -149,18 +149,16 @@ public class H2Messages extends H2Base implements IMessageDB {
     }
 
     @Override
-    public void update(long id, String message, String description, String user, String expectedComplete, int actual, String link) {
+    public void update(String message, String description, String user, String expectedComplete, int actual, String link){
         Connection conn = getConnection();
         java.util.Date d = new java.util.Date();
-        String ps = "UPDATE messages SET message = ?, description = ?, user = ?, expectedComplete = ?, actual = ?, link = ? WHERE id = ?";
+        String ps = "UPDATE messages SET message = ?, description = ?, expectedComplete = ?, actual = ? WHERE link = ?";
         try (PreparedStatement p = conn.prepareStatement(ps)) {
             p.setString(1, message);
             p.setString(2, description);
-            p.setString(3, user);
-            p.setLong(4, d.getTime());
-            p.setString(5, expectedComplete);
-            p.setInt(6,  actual);
-            p.setString(7, link);
+            p.setLong(3, d.getTime());
+            p.setInt(4, actual);
+            p.setString(5,  link);
             p.execute();
         } catch (SQLException e) {
             throw new H2MessagesException(e);

@@ -1,6 +1,7 @@
 package wpd2.cw.servlet;
 
 import com.google.common.base.Charsets;
+//import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import wpd2.cw.dbdemo.db.H2User;
@@ -29,6 +30,7 @@ public class UpdateServlet extends BaseServlet {
     private static final String DESCRIPTION_PARAMETER = "description";
     private static final String EXPECTED_PARAMETER = "expectedComplete";
     private static final String LINK_PARAMETER = "link";
+    private static final String USER_PARAMETER = "user";
     private static final String METHOD_PARAMETER = "method";
     private static final String ID_PARAMETER = "id";
 
@@ -108,6 +110,7 @@ public class UpdateServlet extends BaseServlet {
         if ("delete".equals(method)) {
             doDelete(request, response);
         } else {
+            String user = request.getParameter(USER_PARAMETER);
             String message = request.getParameter(MESSAGE_PARAMETER);
             String description = request.getParameter(DESCRIPTION_PARAMETER);
             String expectedComplete = request.getParameter(EXPECTED_PARAMETER);
@@ -119,7 +122,7 @@ public class UpdateServlet extends BaseServlet {
                 issue("text/plain", HttpServletResponse.SC_NOT_FOUND, err.getBytes(Charsets.UTF_8), response);
                 return;
             }
-            db.add(message, description, userName, expectedComplete, actual, link);
+            db.update(message, description, user, expectedComplete, actual, link );
             response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
     }

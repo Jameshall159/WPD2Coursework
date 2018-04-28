@@ -46,6 +46,9 @@ public interface IMessageDB {
      */
     void delete(long id);
 
-
-    void update(long id, String message, String description, String user, String expectedComplete, int actual, String link );
+    /**
+     * Delete message with the given id, if it exists
+     * @param link The id
+     */
+    void update(String message, String description, String user, String expectedComplete, int actual, String link );
 }

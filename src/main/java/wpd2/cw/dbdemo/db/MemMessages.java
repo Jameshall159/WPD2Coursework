@@ -72,13 +72,13 @@ public class MemMessages implements IMessageDB {
     }
 
     @Override
-    public synchronized void update(@NonNull long id, String message, String description, String user, String expectedComplete, int actual, String link ) {
+    public synchronized void update(String message, String description, String user, String expectedComplete, int actual, String link ) {
         for (Message m : messages) {
-            if (id == m.getId()) {
+
                 Message me = new Message(index++, message, description, user, new Date().getTime(), expectedComplete, actual, link);
                 messages.set(1, me);
                 return;
-            }
+
         }
     }
 }
