@@ -39,9 +39,13 @@
         <td><center>
     {{#matches}}
 
+<<<<<<< HEAD
+=======
+        <input type="hidden" name="method" value="delete">
+>>>>>>> 0c2a38238c5e28a20e158711d6819b58ecc2cbac
             <input type="hidden" name="method" value="delete">
-            <button type="submit" style="margin-top:10px;" value="Delete" class="btn btn-outline-danger">Delete</button>
-        <button  style="margin-top:10px;" class="btn btn-outline-danger"><a href="/update/{{link}}"class="href">Update</a></button>
+            <button type="submit" style="margin-top:10px; border:1px solid red; background-color:red; color:white;" value="Delete" class="btn btn-outline-danger">Delete</button>
+        <button  style="margin-top:10px;" class="btn"><a href="/update/{{link}}"class="href" style="color:black;">Update</a></button>
 
     {{/matches}}
         </center>
