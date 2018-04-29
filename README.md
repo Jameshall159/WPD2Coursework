@@ -21,7 +21,7 @@ Main application features:
 
 - Milestones can be edited.
 
-- A milestone (list) can be shared with friends using a link.
+- A Milestone (list) can be shared with friends using a link.
 
 
 # Get started
@@ -32,8 +32,6 @@ and be running on port 8080.
 You can then visit the application in browser at: localhost:8080
 
 The initial screen will be the application login. You must create an account so please go to register where you can do so.
-
-Once logged in, you can use the system by adding a milestone and completing most of the features from the above list.
     
     
 ## Technology stack used in the project
