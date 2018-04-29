@@ -20,9 +20,18 @@ Main application features:
 
 # Get started
 
-After the project has been developed, this will become avaliable.
+To run the project, simply open up your desired editor and run the web runner. The application should then build
+and be running on port 8080.
+
+You can then visit the application in browser at: localhost:8080
+
+The initial screen will be the ablation login. You must create an account so please go to register where you can do so.
     
     
 ## Technology stack used in the project
 
-After the project has been completed, this will be updated.
+*Java
+*JavaSript
+*HTML
+*Mustache
+*SQL
