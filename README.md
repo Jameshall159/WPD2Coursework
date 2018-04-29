@@ -10,12 +10,18 @@ milestones that you are planning to carry out for your coursework project. The a
 user to define his or her own milestones, which are only visible to the user.
 
 Main application features:
--A description of the milestone,
--An intended due date and
--The actual completion date.
--Milestones can be removed from the list.
--Milestones can be edited.
--A milestone (list) can be shared with friends using a link. 
+
+- A description of the milestone,
+
+- An intended due date and
+
+- The actual completion date.
+
+- Milestones can be removed from the list.
+
+- Milestones can be edited.
+
+- A milestone (list) can be shared with friends using a link.
 
 
 # Get started
@@ -30,8 +36,12 @@ The initial screen will be the ablation login. You must create an account so ple
     
 ## Technology stack used in the project
 
-*Java
-*JavaSript
-*HTML
-*Mustache
-*SQL
+- Java
+
+- JavaSript
+
+- HTML
+
+- Mustache
+
+- SQL
