@@ -1,0 +1,113 @@
+{{>homeNav}}
+
+
+<div class="container">
+    <h1 style="margin-top:80px;">Milestone from: {{user}}</h1>
+
+<<<<<<< HEAD
+=======
+
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Milestone Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date To Complete</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">User</th>
+            <th scope="col">Link</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <form action="/sharedmilestone/{{user}}" method="POST">
+            {{^messages}}
+                <label>There are no messages for {{user}}</label>
+            {{/messages}}
+            {{#messages}}
+                <tr>
+
+                   <td>{{message}}</td>
+                    <td>{{description}}</td>
+                    <td>{{expectedComplete}}</td>
+                    <td>{{createdDate}}</td>
+                    <td>{{user}}</td>
+                    <td>{{link}}</td>
+
+
+                    <td><center>
+                        {{#matches}}
+                            <button type="button" style="margin-bottom:10px;" class="btn btn-outline-primary">View</button> <button type="button" class="btn btn-outline-secondary">Edit</button>
+                            <input type="hidden" name="method" value="delete">
+                            <button type="submit" style="margin-top:10px;" value="Delete" class="btn btn-outline-danger">Delete</button>
+                        {{/matches}}
+                    </center>
+                    </td>
+
+                </tr>
+
+
+            {{/messages}}
+
+
+        </form>
+
+
+
+</div>
+
+<div class="container">
+
+
+    <form style="padding-top:100px;" action="/update/{{user}}" method="POST">
+>>>>>>> 0c2a38238c5e28a20e158711d6819b58ecc2cbac
+        {{#messages}}
+        <fieldset>
+            <div class="form-group">
+                <label for="disabledTextInput">Milestone</label>
+                <input type="text" name="message" class="form-control" placeholder="{{message}}" required>
+            </div>
+            <div class="form-group">
+                <label for="disabledTextInput">Milestone Description</label>
+                <input type="text" name="description" id="disabledTextInput" class="form-control" placeholder="{{description}}" required>
+            </div>
+            <div class="form-group">
+                <label for="disabledTextInput">Milestone Completion Date</label>
+                <input type='text' name="expectedComplete" class="form-control" placeholder="{{expectedComplete}}" id='datetimepicker1' required/>
+            </div>
+            <div class="form-group">
+                <input type='text' name="link" class="form-control" placeholder="mm/dd/yy 00:00:00" id='link' hidden/>
+            </div>
+            <button type="submit" style="margin-top:1em; border-radius:10px; height:50px; width:150px;">Submit</button>
+        </fieldset>
+        {{/messages}}
+    </form>
+
+
+        {{^messages}}
+            <label>There are no messages for {{user}}</label>
+        {{/messages}}
+        {{#messages}}
+
+
+        <form action="/update/{{link}}" name="method" value="update" method="POST">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Milestone Name</label>
+                <input type="text" value="{{message}}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date to Complete</label>
+                <input type="text" value="{{expectedComplete}}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <button type="submit" value="update" style="margin-top:1em; border-radius:10px; height:50px; width:150px;">Submit</button>
+
+        </form>
+{{/messages}}
+
+</div>
+
+{{>foot}}

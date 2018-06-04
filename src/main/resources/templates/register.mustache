@@ -1,0 +1,24 @@
+{{>head}}
+<br />
+<hr style="margin-bottom:20px;"/>
+<div style="background-image: url(images/3.jpg); background-repeat: no-repeat; background-size: cover; height:450px;">
+    <br />
+    <center><h1 style="margin-top:50px; color:white;">Register</h1></center>
+<center><form action="/register" method="POST">
+    <input style="margin-top:20px; border-radius:10px; width:300px; padding:10px;" type="text" name="userName" placeholder="name" value="{{userName}}"/><br/>
+    <input style="margin-top:10px; border-radius:10px; width:300px; padding:10px;" type="password" name="password"  placeholder="password"/><br/>
+    <input type="submit" style="background-color:white; color:black; height:40px; border-radius:10px; margin-top:15px; width:100px;" value="Register" style="margin-top:1em;"/> <br>
+
+    <label style="color:white; font-size:15px; margin-top:40px;"><a href="/login" style="color:white;">Return to Login</a></label>
+    {{#err}}
+        <p style="font-size:30px; color:white;">{{err}}</p>
+    {{/err}}
+</form>
+
+
+    <br/>
+    <hr style="margin-top:80px;"/>
+
+</center>
+</div>
+{{>foot}}

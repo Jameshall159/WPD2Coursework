@@ -1,0 +1,53 @@
+{{>homeNav}}
+
+<div class="container" style="padding-top:100px;">
+<h1>Milestones</h1>
+
+
+    {{^messages}}
+        <h3>There are no Milestones. <a href="/addMilestone" class="href">Click to Add Now!</a></h3>
+    {{/messages}}
+<p>Current Milestones.</p>
+
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Milestone Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date To Complete</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">User</th>
+        </tr>
+        </thead>
+        {{#messages}}
+
+        <tbody>
+
+        <tr>
+
+
+            <td>{{message}}</td>
+            <td>{{description}}</td>
+            <td>{{expectedComplete}}</td>
+            <td>{{createdDate}}</td>
+            <td>{{user}}</td>
+
+
+
+        </tr>
+
+
+        </tbody>
+    {{/messages}}
+
+</table>
+
+    {{#user}}
+        <form action="/messages/{{user}}">
+            <input type="submit" value="Your milestones" style="margin-top:1em; border-radius:10px; height:50px; width:150px;"/>
+        </form>
+    {{/user}}
+
+
+</div>
+{{>foot}}

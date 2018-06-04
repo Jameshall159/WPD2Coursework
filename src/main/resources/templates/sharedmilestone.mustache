@@ -1,0 +1,46 @@
+{{>homeNav}}
+
+
+<div class="container">
+    <h1 style="margin-top:80px;">Milestone from: {{user}}</h1>
+
+
+    <table class="table container">
+        <thead>
+        <tr>
+            <th scope="col">Milestone Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date To Complete</th>
+            <th scope="col">Date Created</th>
+            <th scope="col">User</th>
+            <th scope="col">Link</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <form action="/sharedmilestone/{{user}}" method="POST">
+            {{^messages}}
+                <label>There are no messages for {{user}}</label>
+            {{/messages}}
+            {{#messages}}
+                <tr>
+
+                    <td>{{message}}</td>
+                    <td>{{description}}</td>
+                    <td>{{expectedComplete}}</td>
+                    <td>{{createdDate}}</td>
+                    <td>{{user}}</td>
+                    <td>{{link}}</td>
+
+
+
+                </tr>
+
+
+            {{/messages}}
+
+
+        </form>
+
+</div>
+{{>foot}}
